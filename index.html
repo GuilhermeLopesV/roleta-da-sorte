@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Roleta da Sorte — Gire e descubra seu prêmio! Personalize os itens e experimente a sorte." />
+  <title>🎡 Roleta da Sorte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- Particles background -->
+  <div class="particles" id="particles"></div>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-icon">🎡</div>
+      <h1 class="header-title">Roleta da Sorte</h1>
+      <p class="header-subtitle">Gire e descubra seu destino!</p>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Wheel Section -->
+      <section class="wheel-section">
+        <div class="wheel-wrapper">
+          <!-- Arrow pointer -->
+          <div class="wheel-pointer" id="pointer">▼</div>
+
+          <!-- Canvas wheel -->
+          <div class="wheel-canvas-container">
+            <canvas id="wheelCanvas" width="420" height="420"></canvas>
+          </div>
+
+          <!-- Center button -->
+          <button class="spin-btn" id="spinBtn" onclick="spinWheel()">
+            <span class="spin-btn-inner">
+              <span class="spin-icon">⚡</span>
+              <span class="spin-text">GIRAR</span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Controls Section -->
+      <section class="controls-section">
+
+        <!-- Result display -->
+        <div class="result-box" id="resultBox">
+          <div class="result-label">RESULTADO</div>
+          <div class="result-value" id="resultValue">Gire a roleta!</div>
+        </div>
+
+        <!-- Items editor -->
+        <div class="editor-card">
+          <div class="editor-header">
+            <span class="editor-title">✏️ Personalizar Itens</span>
+            <span class="editor-count" id="editorCount">8 itens</span>
+          </div>
+
+          <div class="items-list" id="itemsList"></div>
+
+          <div class="editor-actions">
+            <button class="btn-add" id="btnAdd" onclick="addItem()">
+              <span>＋</span> Adicionar Item
+            </button>
+            <button class="btn-apply" id="btnApply" onclick="applyItems()">
+              <span>✓</span> Aplicar
+            </button>
+          </div>
+        </div>
+
+        <!-- History -->
+        <div class="history-card" id="historyCard">
+          <div class="history-header">
+            <span class="history-title">🏆 Histórico</span>
+            <button class="btn-clear" onclick="clearHistory()">Limpar</button>
+          </div>
+          <ul class="history-list" id="historyList">
+            <li class="history-empty">Nenhum giro ainda.</li>
+          </ul>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Result Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-emoji" id="modalEmoji">🎉</div>
+      <div class="modal-title">Parabéns!</div>
+      <div class="modal-result" id="modalResult"></div>
+      <button class="modal-btn" onclick="closeModal()">Continuar →</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
